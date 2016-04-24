@@ -1,0 +1,23 @@
+{
+  "DataType": "tree",
+  "Items": [
+    {
+      "ItemID": "a05a1950a4bd7758abe1bef19078558a2957e3e9",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": "Activity 4"
+    },
+    {
+      "ItemID": "91ce8080bde3d8c94a907acb46db5b550d60278e",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": "Activity 5"
+    },
+    {
+      "ItemID": "701f47f2309db83225dfe8fbdce5f67002277814",
+      "ItemType": "tree",
+      "Mode": "2",
+      "Name": "Group 1"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "DataType": "activity",
+  "ShortName": "GRP1-1",
+  "Name": "Activity 1",
+  "Description": "The first task",
+  "Properties": []
+}

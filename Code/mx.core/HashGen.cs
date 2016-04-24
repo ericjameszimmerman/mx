@@ -54,5 +54,20 @@ namespace mx.core
 
             return sb.ToString();
         }
+
+        public string GenerateHash(byte[] data)
+        {
+            byte[] hashValue;
+
+            hashValue = hash.ComputeHash(data);
+
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in hashValue)
+            {
+                sb.AppendFormat("{0:x2}", b);
+            }
+
+            return sb.ToString();
+        }
     }
 }

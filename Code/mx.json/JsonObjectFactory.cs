@@ -1,4 +1,5 @@
 ﻿using mx.core;
+using mx.core.Utility;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -38,12 +39,29 @@ namespace mx.json
 
             return jsonTreeCollection;
         }
-        
+
+        public void BuildJsonTreeFile(Stream stream, Tree tree)
+        {
+            using (StreamWriter sw = new NoCloseStreamWriter(stream))
+            {
+                using (JsonWriter jw = new JsonTextWriter(sw))
+                {
+                    jw.Formatting = Formatting.Indented;
+
+                    JsonSerializer serializer = new JsonSerializer();
+
+                    serializer.NullValueHandling = NullValueHandling.Ignore;
+                    serializer.Serialize(jw, BuildJsonTreeObject(tree));
+                    sw.Flush();
+                }
+            }
+        }
+
         public JsonTree BuildJsonTreeObject(Tree tree)
         {
             JsonTree jsonTree = new JsonTree();
 
-            jsonTree.ID = tree.ID;
+            //jsonTree.ID = tree.ID;
 
             foreach (TreeItem item in tree.Items)
             {
@@ -79,6 +97,20 @@ namespace mx.json
             }
         }
 
+        public void BuildJsonActivityFile(StreamWriter sw, Activity activity)
+        {
+            using (JsonWriter jw = new JsonTextWriter(sw))
+            {
+                jw.Formatting = Formatting.Indented;
+
+                JsonSerializer serializer = new JsonSerializer();
+
+                serializer.NullValueHandling = NullValueHandling.Ignore;
+                serializer.Serialize(jw, BuildJsonActivityObject(activity));
+                sw.Flush();
+            }
+        }
+
         public JsonActivityCollection BuildJsonActivityCollection(ActivityCollection collection)
         {
             JsonActivityCollection jsonCollection = new JsonActivityCollection();
@@ -106,7 +138,7 @@ namespace mx.json
         public JsonActivityBase BuildJsonActivityObject(Activity activity)
         {
             JsonActivityBase jsonActivity = new JsonActivityBase();
-            jsonActivity.ID = activity.ID;
+            //jsonActivity.ID = activity.ID;
             jsonActivity.Name = activity.Name;
             jsonActivity.ShortName = activity.ShortName;
             jsonActivity.Description = activity.Description;

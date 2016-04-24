@@ -15,7 +15,7 @@ namespace mx.json
         {
             this.Properties = new List<JsonPropertyBase>();
         }
-
+        
         /// <summary>
         ///     An activity short-name or code
         /// </summary>
@@ -36,5 +36,13 @@ namespace mx.json
 
         [JsonProperty]
         public List<JsonPropertyBase> Properties { get; set; }
+
+        public override string DataType
+        {
+            get
+            {
+                return "activity";
+            }
+        }
     }
 }

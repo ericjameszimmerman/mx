@@ -17,5 +17,13 @@ namespace mx.json
 
         [JsonProperty]
         public List<JsonTreeItem> Items { get; set; }
+
+        public override string DataType
+        {
+            get
+            {
+                return "tree";
+            }
+        }
     }
 }

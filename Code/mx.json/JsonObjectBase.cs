@@ -15,11 +15,20 @@ namespace mx.json
 
         }
 
+        [JsonProperty(Order = -2)]
+        public virtual string DataType
+        {
+            get
+            {
+                return "err";
+            }
+        }
+
         /// <summary>
         ///     A unique ID for this element
         ///     TODO: Likely SHA-1
         /// </summary>
-        [JsonProperty(Order = -2)]
-        public string ID { get; set; }
+        //[JsonProperty(Order = -3)]
+        //public string ID { get; set; }
     }
 }

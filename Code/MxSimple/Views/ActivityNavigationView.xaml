@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="MxSimple.Views.ActivityNavigationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MxSimple.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" MaxWidth="500" MinWidth="200" />
+        </Grid.ColumnDefinitions>
+
+        <local:LockedToolBar x:Name="ButtonBar" Grid.Row="0" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" Padding="0" Margin="0">
+
+            <Button HorizontalAlignment="Left" Command="{Binding NewCommand}" IsEnabled="{Binding IsNewAllowed, UpdateSourceTrigger=PropertyChanged}" Padding="0" Margin="0,0,0,0" VerticalAlignment="Top" Height="34">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MxSimple;component/Images/Actions-document-new-icon-32.png" Width="32" Height="32"/>
+                    <TextBlock Padding="6" VerticalAlignment="Center">New Activity</TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button HorizontalAlignment="Left" Command="{Binding NewCommand}" IsEnabled="{Binding IsNewAllowed, UpdateSourceTrigger=PropertyChanged}" Padding="0" Margin="0,0,0,0" VerticalAlignment="Top" Height="34">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MxSimple;component/Images/Actions-folder-new-icon-32.png" Width="32" Height="32"/>
+                    <TextBlock Padding="6" VerticalAlignment="Center">New Group</TextBlock>
+                </StackPanel>
+            </Button>
+            
+            <Button HorizontalAlignment="Left" Command="{Binding OpenCommand}" IsEnabled="{Binding IsOpenAllowed, UpdateSourceTrigger=PropertyChanged}" Padding="3,0,3,0" Margin="0,0,0,0" VerticalAlignment="Top" Height="34">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MxSimple;component/Images/Actions-document-properties-icon-32.png" Width="32" Height="32"/>
+                    <TextBlock Padding="6" VerticalAlignment="Center">Edit Activity</TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button HorizontalAlignment="Left" Command="{Binding SaveCommand}" IsEnabled="{Binding IsSaveAllowed, UpdateSourceTrigger=PropertyChanged}" Padding="3,0,3,0" Margin="0,0,0,0" VerticalAlignment="Top" Height="34">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MxSimple;component/Images/Actions-document-save-icon-32.png" Width="32" Height="32"/>
+                    <TextBlock Padding="6" VerticalAlignment="Center">Save</TextBlock>
+                </StackPanel>
+            </Button>
+
+        </local:LockedToolBar>
+
+        <ContentPresenter Grid.Row="1">
+            <ContentPresenter.Content>
+                <Binding Path="ActiveTreeView"/>
+            </ContentPresenter.Content>
+        </ContentPresenter>
+
+        <GridSplitter HorizontalAlignment="Right" 
+                  VerticalAlignment="Stretch" 
+                  Grid.Column="1" Grid.Row="1" ResizeBehavior="PreviousAndNext"
+                  Width="5" Background="#FFBCBCBC"/>
+
+        <ContentPresenter Grid.Row="1" Grid.Column="2">
+            <ContentPresenter.Content>
+                <Binding Path="ActiveItemView"/>
+            </ContentPresenter.Content>
+        </ContentPresenter>
+    </Grid>
+</UserControl>

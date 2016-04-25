@@ -55,7 +55,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Commands\CommandReference.cs" />
+    <Compile Include="Commands\DeferredAction.cs" />
+    <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Factories\ViewFactory.cs" />
+    <Compile Include="ViewModels\ActivityNavigationViewModel.cs" />
+    <Compile Include="ViewModels\ActivityTreeViewModel.cs" />
+    <Compile Include="ViewModels\ActivityViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\TreeViewLineConverter.cs" />
+    <Page Include="Views\ActivityNavigationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ActivityTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ActivityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,7 +85,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\ActivityNavigationView.xaml.cs">
+      <DependentUpon>ActivityNavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ActivityTreeView.xaml.cs">
+      <DependentUpon>ActivityTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ActivityView.xaml.cs">
+      <DependentUpon>ActivityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EnumMatchToBooleanConverter.cs" />
+    <Compile Include="Views\LockedToolbar.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -94,6 +127,57 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\mx.core\mx.core.csproj">
+      <Project>{abe1ff11-e95d-45ef-a5bf-07c6ecf22edd}</Project>
+      <Name>mx.core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mx.json\mx.json.csproj">
+      <Project>{fd3116a7-e04a-41a4-a8bb-fea67e07ff59}</Project>
+      <Name>mx.json</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mx.services\mx.services.csproj">
+      <Project>{39d10ca8-6497-42f9-9636-b8a169d2dae5}</Project>
+      <Name>mx.services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zaf.Services\Zaf.Services.csproj">
+      <Project>{ad60c8e1-a3fa-48df-8abc-79402718c9d7}</Project>
+      <Name>Zaf.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Folder-icon.png" />
+    <Resource Include="Images\notes-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Actions-document-new-icon-16.png" />
+    <Resource Include="Images\Actions-document-new-icon-32.png" />
+    <Resource Include="Images\Actions-document-properties-icon-16.png" />
+    <Resource Include="Images\Actions-document-properties-icon-32.png" />
+    <Resource Include="Images\Actions-document-save-icon-16.png" />
+    <Resource Include="Images\Actions-document-save-icon-32.png" />
+    <Resource Include="Images\Actions-folder-new-icon-16.png" />
+    <Resource Include="Images\Actions-folder-new-icon-32.png" />
+    <Resource Include="Images\Folder-icon-16.png" />
+    <Resource Include="Images\Folder-icon-32.png" />
+    <Resource Include="Images\Mimetypes-application-x-zerosize-icon-16.png" />
+    <Resource Include="Images\Mimetypes-application-x-zerosize-icon-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\address-book-icon-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\calendar-icon-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\folder-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\text-plain.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

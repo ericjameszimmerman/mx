@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mx.json", "mx.json\mx.json.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MxSimple", "MxSimple\MxSimple.csproj", "{6D8E6507-FE90-4EAB-9FA9-0C29E557420E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zaf.Services", "Zaf.Services\Zaf.Services.csproj", "{AD60C8E1-A3FA-48DF-8ABC-79402718C9D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mx.services", "mx.services\mx.services.csproj", "{39D10CA8-6497-42F9-9636-B8A169D2DAE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{6D8E6507-FE90-4EAB-9FA9-0C29E557420E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D8E6507-FE90-4EAB-9FA9-0C29E557420E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D8E6507-FE90-4EAB-9FA9-0C29E557420E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD60C8E1-A3FA-48DF-8ABC-79402718C9D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD60C8E1-A3FA-48DF-8ABC-79402718C9D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD60C8E1-A3FA-48DF-8ABC-79402718C9D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD60C8E1-A3FA-48DF-8ABC-79402718C9D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39D10CA8-6497-42F9-9636-B8A169D2DAE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39D10CA8-6497-42F9-9636-B8A169D2DAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39D10CA8-6497-42F9-9636-B8A169D2DAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39D10CA8-6497-42F9-9636-B8A169D2DAE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

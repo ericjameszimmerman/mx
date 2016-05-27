@@ -1,0 +1,9 @@
+{
+  "DataType": "activity",
+  "UniqueID": "8a106b01-b107-48a1-ab99-c5dfedb3ed6c",
+  "ShortName": "MXSE-3",
+  "Name": "Schedule List View",
+  "Description": "Editor supporting add/remove operations for linking activities to an iteration",
+  "TimeEntries": [],
+  "Properties": []
+}

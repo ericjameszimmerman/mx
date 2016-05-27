@@ -1,0 +1,9 @@
+{
+  "DataType": "activity",
+  "UniqueID": "5144307d-1981-403b-8ced-e1ee598e1818",
+  "ShortName": "MXSE-1",
+  "Name": "Tree View Editor",
+  "Description": "Editor supporting CRUD operations for activities",
+  "TimeEntries": [],
+  "Properties": []
+}

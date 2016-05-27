@@ -1,0 +1,9 @@
+{
+  "DataType": "activity",
+  "UniqueID": "947808ef-125f-468a-a0f4-26cceb6f6de8",
+  "ShortName": "MXSE-6",
+  "Name": "Activity Edit Dialog",
+  "Description": "Dialog box for editing description, estimate, adding notes, etc.",
+  "TimeEntries": [],
+  "Properties": []
+}

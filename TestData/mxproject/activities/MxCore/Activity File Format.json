@@ -1,0 +1,22 @@
+{
+  "DataType": "activity",
+  "UniqueID": "d5e4a0a5-491e-4920-8267-a921300816ee",
+  "ShortName": "MXC-3",
+  "Name": "Activity File Format",
+  "Description": "Format for an activity, including estimate, comments, attachments?, etc.",
+  "TimeEntries": [
+    {
+      "DataType": "timeentry",
+      "Charger": "Eric Zimmerman <ericjzim@gmail.com>",
+      "Date": "2016-05-20T02:12:01.8739071Z",
+      "Duration": "3.50"
+    },
+    {
+      "DataType": "timeentry",
+      "Charger": "Eric Zimmerman <ericjzim@gmail.com>",
+      "Date": "2016-05-19T02:12:01.8739071Z",
+      "Duration": "1.75"
+    }
+  ],
+  "Properties": []
+}

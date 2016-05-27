@@ -1,0 +1,29 @@
+{
+  "DataType": "tree",
+  "Items": [
+    {
+      "ItemID": "bac0385c180c4a0694435be14f457a40acdf055e",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": ".group"
+    },
+    {
+      "ItemID": "c499c19d98bd431315e5d2cad88ed1eafa8ec80d",
+      "ItemType": "tree",
+      "Mode": "2",
+      "Name": "MxConsole"
+    },
+    {
+      "ItemID": "bf9032c42c076cfefe2d5a7e8dab01fa0c7b3ba7",
+      "ItemType": "tree",
+      "Mode": "2",
+      "Name": "MxCore"
+    },
+    {
+      "ItemID": "f0ccc847e9ac7b2e4416b96751a34e9055dd4e5c",
+      "ItemType": "tree",
+      "Mode": "2",
+      "Name": "MxSimple"
+    }
+  ]
+}

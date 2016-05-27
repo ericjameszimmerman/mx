@@ -1,0 +1,9 @@
+{
+  "DataType": "activity",
+  "UniqueID": "40fa3458-8cee-4a2b-b01a-ddda498460bf",
+  "ShortName": "MXSE-4",
+  "Name": "Activity Tree View Selector",
+  "Description": "Derivative of Tree Editor to select a task to add to iteration list",
+  "TimeEntries": [],
+  "Properties": []
+}

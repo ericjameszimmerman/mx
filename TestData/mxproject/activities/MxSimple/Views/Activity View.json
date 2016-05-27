@@ -1,0 +1,9 @@
+{
+  "DataType": "activity",
+  "UniqueID": "9021dc08-5731-4537-9d9f-14fb58445390",
+  "ShortName": "MXSE-2",
+  "Name": "Activity View",
+  "Description": "View for the selected activity",
+  "TimeEntries": [],
+  "Properties": []
+}

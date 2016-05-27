@@ -1,6 +1,7 @@
 ﻿using mx.core;
 using mx.core.Utility;
 using mx.json;
+using mx.services.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,7 @@ namespace EstimationConsole
         private JsonObjectFactory factory;
         private string objectPath;
         private string historyPath;
+        private Group activityRoot;
 
         public Project()
         {
@@ -23,6 +25,25 @@ namespace EstimationConsole
 
         public string ProjectPath { get; set; }
         
+        public Group ActivityRoot
+        {
+            get
+            {
+                return this.activityRoot;
+            }
+        }
+
+        public Group WorkingGroup { get; set; }
+
+        public void Load()
+        {
+            TestDataBuilder builder = new TestDataBuilder();
+
+            ProjectLoader loader = new ProjectLoader();
+            this.activityRoot = loader.LoadProjectTree(builder.GetTestDataPath());
+            this.WorkingGroup = this.activityRoot;
+        }
+
         public void Commit()
         {
             string rootPath = this.ProjectPath;

@@ -1,0 +1,9 @@
+{
+  "DataType": "activity",
+  "UniqueID": "1611f8ac-96f7-4feb-bcea-d4ab220b2317",
+  "ShortName": "MXSE-5",
+  "Name": "Schedule View",
+  "Description": "Editor supporting CRUD operations for schedules / iterations",
+  "TimeEntries": [],
+  "Properties": []
+}

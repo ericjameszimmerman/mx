@@ -12,11 +12,14 @@ namespace mx.core
         {
             this.ShortName = string.Empty;
             this.Description = string.Empty;
+            this.TimeEntries = new TrackingCollection();
         }
         
         public string Description { get; set; }
 
         public string ShortName { get; set; }
+        
+        public TrackingCollection TimeEntries { get; set; }
 
         public override string GetDataToHash()
         {

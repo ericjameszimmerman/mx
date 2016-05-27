@@ -46,10 +46,15 @@
   <ItemGroup>
     <Compile Include="JsonActivityCollection.cs" />
     <Compile Include="JsonActivityProperties.cs" />
+    <Compile Include="JsonGroup.cs" />
     <Compile Include="JsonObjectBase.cs" />
     <Compile Include="JsonActivityBase.cs" />
     <Compile Include="JsonCommit.cs" />
     <Compile Include="JsonObjectFactory.cs" />
+    <Compile Include="JsonScheduleBlock.cs" />
+    <Compile Include="JsonScheduleItem.cs" />
+    <Compile Include="JsonTrackingCollection.cs" />
+    <Compile Include="JsonTrackingEntry.cs" />
     <Compile Include="JsonTree.cs" />
     <Compile Include="JsonTreeCollection.cs" />
     <Compile Include="JsonTreeItem.cs" />

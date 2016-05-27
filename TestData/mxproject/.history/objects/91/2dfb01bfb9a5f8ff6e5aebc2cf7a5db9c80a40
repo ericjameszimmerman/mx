@@ -1,0 +1,22 @@
+{
+  "DataType": "activity",
+  "UniqueID": "aceac176-fb53-4404-8564-65dc5fa0475f",
+  "ShortName": "MXC-1",
+  "Name": "Schedule File Format",
+  "Description": "Format for assigning items in an iteration; how to link / unique ids",
+  "TimeEntries": [
+    {
+      "DataType": "timeentry",
+      "Charger": "Eric Zimmerman <ericjzim@gmail.com>",
+      "Date": "2016-05-20T02:12:01.8739071Z",
+      "Duration": "13.25"
+    },
+    {
+      "DataType": "timeentry",
+      "Charger": "Eric Zimmerman <ericjzim@gmail.com>",
+      "Date": "2016-05-19T02:12:01.8739071Z",
+      "Duration": "5.00"
+    }
+  ],
+  "Properties": []
+}

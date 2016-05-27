@@ -1,0 +1,9 @@
+{
+  "DataType": "activity",
+  "UniqueID": "1952d26a-3339-429f-8460-6f468305e4bc",
+  "ShortName": "MXC-2",
+  "Name": "Tracking File Format",
+  "Description": "Format for adding time entries for tasks... general scope",
+  "TimeEntries": [],
+  "Properties": []
+}

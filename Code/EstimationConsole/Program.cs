@@ -1,7 +1,9 @@
-﻿using mx.core;
+﻿using Mono.Options;
+using mx.core;
 using mx.json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,38 +15,67 @@ namespace EstimationConsole
     {
         static void Main(string[] args)
         {
-            TestDataBuilder builder = new TestDataBuilder();
-            ActivityCollection collection = builder.BuildCollection1();
+            bool show_help = false;
+            ProjectConsole projectConsole = new ProjectConsole();
 
-            TreeCollection treeCollection = builder.BuildTreeCollection(collection);
+            OptionSet option_set = new OptionSet()
+                .Add("?|help|h", "Prints out the options.", option => show_help = option != null)
+                .Add("p=|proj=|project=|projectname=",
+                   "REQUIRED: ProjectName - The project path to add or edit.",
+                   option => projectConsole.ProjectPath = option);
 
-            JsonObjectFactory factory = new JsonObjectFactory();
-
-            // This is essentially our directory structure and diff list
-            string filename = @"D:\Projects\trees.json";
-            using (FileStream fs = File.Open(filename, FileMode.Create))
+            try
             {
-                factory.BuildJsonTreeCollectionFile(fs, treeCollection);
+                option_set.Parse(args);
+            }
+            catch (OptionException e)
+            {
+                Debug.WriteLine(e.Message);
+                ShowHelp("Invalid Argument..", option_set);
             }
 
-            // This is the details of all activities... estimates not in first rev
-            filename = @"D:\Projects\activities.json";
-            using (FileStream fs = File.Open(filename, FileMode.Create))
+            if (show_help)
             {
-                factory.BuildJsonActivityCollectionFile(fs, collection);
+                ShowHelp("mxconsole.exe", option_set);
             }
 
             Project project = new Project();
-            project.ProjectPath = builder.GetTestDataPath();
-            project.Commit();
-            // This is the details of all activities... estimates not in first rev
-            //filename = @"D:\Projects\activity.json";
+            project.Load();
+
+            projectConsole.SetProject(project);
+            projectConsole.RunConsole();
+
+            //TestDataBuilder builder = new TestDataBuilder();
+            //ActivityCollection collection = builder.BuildMxCollection();
+
+            //TreeCollection treeCollection = builder.BuildTreeCollection(collection);
+
+            //JsonObjectFactory factory = new JsonObjectFactory();
+
+            //// This is essentially our directory structure and diff list
+            //string filename = @"D:\Projects\trees.json";
             //using (FileStream fs = File.Open(filename, FileMode.Create))
             //{
-            //    factory.BuildJsonActivityFile(fs, collection.Root.Items[1] as Activity);
+            //    factory.BuildJsonTreeCollectionFile(fs, treeCollection);
             //}
 
-            // Next file type is schedule... I should put this object ref into the trees as well
+            //// This is the details of all activities... estimates not in first rev
+            //filename = @"D:\Projects\activities.json";
+            //using (FileStream fs = File.Open(filename, FileMode.Create))
+            //{
+            //    factory.BuildJsonActivityCollectionFile(fs, collection);
+            //}
+
+            //Project project = new Project();
+            //project.ProjectPath = builder.GetTestDataPath();
+            //project.Commit();
+        }
+
+        public static void ShowHelp(string message, OptionSet option_set)
+        {
+            Console.Error.WriteLine(message);
+            option_set.WriteOptionDescriptions(Console.Error);
+            Environment.Exit(-1);
         }
     }
 }

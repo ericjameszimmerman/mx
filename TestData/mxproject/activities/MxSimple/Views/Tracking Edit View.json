@@ -1,0 +1,9 @@
+{
+  "DataType": "activity",
+  "UniqueID": "a215f256-9a6e-4a14-b9a3-f6f85127bd34",
+  "ShortName": "MXSE-8",
+  "Name": "Tracking Edit View",
+  "Description": "View supporting add/edit operations of time entries",
+  "TimeEntries": [],
+  "Properties": []
+}

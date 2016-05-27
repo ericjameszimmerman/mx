@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstimationConsole", "EstimationConsole\EstimationConsole.csproj", "{E750E4B5-B23E-4384-802B-60880E848276}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MxConsole", "EstimationConsole\MxConsole.csproj", "{E750E4B5-B23E-4384-802B-60880E848276}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mx.core", "mx.core\mx.core.csproj", "{ABE1FF11-E95D-45EF-A5BF-07C6ECF22EDD}"
 EndProject

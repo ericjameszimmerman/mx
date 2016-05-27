@@ -45,6 +45,66 @@ namespace EstimationConsole
             return collection;
         }
 
+        public ActivityCollection BuildMxCollection()
+        {
+            ActivityCollection collection = new ActivityCollection();
+            User userEric = new User("Eric Zimmerman", "ericjzim@gmail.com");
+
+            RootGroup root = collection.Root;
+            Group mxSimpleGroup = new Group() { Name = "MxSimple", GroupCode = "MXSE" };
+            collection.AddNew(root, mxSimpleGroup);
+
+            Group mxSimpleViewsGroup = new Group() { Name = "Views" };
+            collection.AddNew(mxSimpleGroup, mxSimpleViewsGroup);
+
+            Activity treeViewEditor = new Activity() { Name = "Tree View Editor", ShortName = "MXSE-1", Description = "Editor supporting CRUD operations for activities" };
+            Activity activityView = new Activity() { Name = "Activity View", ShortName = "MXSE-2", Description = "View for the selected activity" };
+            Activity scheduleListView = new Activity() { Name = "Schedule List View", ShortName = "MXSE-3", Description = "Editor supporting add/remove operations for linking activities to an iteration" };
+            Activity activityTreeViewSelector = new Activity() { Name = "Activity Tree View Selector", ShortName = "MXSE-4", Description = "Derivative of Tree Editor to select a task to add to iteration list" };
+            Activity scheduleView = new Activity() { Name = "Schedule View", ShortName = "MXSE-5", Description = "Editor supporting CRUD operations for schedules / iterations" };
+            Activity activityEditDialog = new Activity() { Name = "Activity Edit Dialog", ShortName = "MXSE-6", Description = "Dialog box for editing description, estimate, adding notes, etc." };
+            Activity trackingView = new Activity() { Name = "Tracking View", ShortName = "MXSE-7", Description = "View supporting accumulation of time entries by task, group, etc." };
+            Activity trackingEditView = new Activity() { Name = "Tracking Edit View", ShortName = "MXSE-8", Description = "View supporting add/edit operations of time entries" };
+
+            collection.AddNew(mxSimpleViewsGroup, treeViewEditor);
+            collection.AddNew(mxSimpleViewsGroup, activityView);
+            collection.AddNew(mxSimpleViewsGroup, scheduleListView);
+            collection.AddNew(mxSimpleViewsGroup, activityTreeViewSelector);
+            collection.AddNew(mxSimpleViewsGroup, scheduleView);
+            collection.AddNew(mxSimpleViewsGroup, activityEditDialog);
+            collection.AddNew(mxSimpleViewsGroup, trackingView);
+            collection.AddNew(mxSimpleViewsGroup, trackingEditView);
+
+            Group mxCoreGroup = new Group() { Name = "MxCore", GroupCode = "MXC" };
+            collection.AddNew(root, mxCoreGroup);
+
+            Activity scheduleFileFormat = new Activity() { Name = "Schedule File Format", ShortName = "MXC-1", Description = "Format for assigning items in an iteration; how to link / unique ids" };
+            Activity trackingFileFormat = new Activity() { Name = "Tracking File Format", ShortName = "MXC-2", Description = "Format for adding time entries for tasks... general scope" };
+            Activity activityFileFormat = new Activity() { Name = "Activity File Format", ShortName = "MXC-3", Description = "Format for an activity, including estimate, comments, attachments?, etc." };
+            Activity noSqlDemo = new Activity() { Name = "NOSQL Demo", ShortName = "MXC-4", Description = "Do a small demo; perhaps No-SQL will fit rather than loose files or zip of files" };
+
+            scheduleFileFormat.TimeEntries.Add(new TrackingEntry() { Charger = userEric, Date = DateTime.UtcNow, Hours = 13.25 });
+            scheduleFileFormat.TimeEntries.Add(new TrackingEntry() { Charger = userEric, Date = DateTime.UtcNow.Subtract(new TimeSpan(24,0,0)), Hours = 5 });
+
+            activityFileFormat.TimeEntries.Add(new TrackingEntry() { Charger = userEric, Date = DateTime.UtcNow, Hours = 3.5 });
+            activityFileFormat.TimeEntries.Add(new TrackingEntry() { Charger = userEric, Date = DateTime.UtcNow.Subtract(new TimeSpan(24, 0, 0)), Hours = 1.75 });
+
+            collection.AddNew(mxCoreGroup, scheduleFileFormat);
+            collection.AddNew(mxCoreGroup, trackingFileFormat);
+            collection.AddNew(mxCoreGroup, activityFileFormat);
+            collection.AddNew(mxCoreGroup, noSqlDemo);
+            
+            Group mxCommandLineGroup = new Group() { Name = "MxConsole", GroupCode = "MXCL" };
+            collection.AddNew(root, mxCommandLineGroup);
+
+            Activity defineSupportedCommands = new Activity() { Name = "Define Supported Commands", ShortName = "MXCL-1", Description = "Make a list of commands and supported options" };
+
+            this.BuildOutputStructure(root, GetTestDataPath());
+            //UpdateAllIds(root);
+
+            return collection;
+        }
+
         public void BuildOutputStructure(RootGroup root, string path)
         {
             ClearDirectory(path);
@@ -57,6 +117,8 @@ namespace EstimationConsole
 
         public void BuildOutput(Group group, string path)
         {
+            this.BuildGroupFileOutput(group, path);
+
             foreach (ActivityObjectBase item in group.Items)
             {
                 if (item is Group)
@@ -79,9 +141,9 @@ namespace EstimationConsole
 
                         byte[] myArray = memoryStream.ToArray();
                         string newId = HashGen.Instance.GenerateHash(myArray);
-                        newActivity.ID = newId;
+                        newActivity.HashCache = newId;
                         
-                        using (FileStream fs = File.Open(Path.Combine(path, newActivity.Name), FileMode.Create))
+                        using (FileStream fs = File.Open(Path.Combine(path, newActivity.Name + ".json"), FileMode.Create))
                         {
                             memoryStream.CopyTo(fs);
                             //CopyStream(memoryStream, fs);
@@ -91,6 +153,27 @@ namespace EstimationConsole
             }
 
             //item.ID = HashGen.Instance.GenerateHash(item.GetDataToHash());
+        }
+
+        public void BuildGroupFileOutput(Group group, string path)
+        {
+            MemoryStream memoryStream = new MemoryStream(4096);
+            using (StreamWriter sw = new NoCloseStreamWriter(memoryStream))
+            {
+                this.factory.BuildJsonGroupFile(sw, group);
+                //sw.Flush();
+                memoryStream.Position = 0;
+
+                byte[] myArray = memoryStream.ToArray();
+                string newId = HashGen.Instance.GenerateHash(myArray);
+                group.HashCache = newId;
+
+                using (FileStream fs = File.Open(Path.Combine(path, ".group"), FileMode.Create))
+                {
+                    memoryStream.CopyTo(fs);
+                    //CopyStream(memoryStream, fs);
+                }
+            }
         }
 
         public static void CopyStream(Stream input, Stream output)
@@ -134,7 +217,7 @@ namespace EstimationConsole
         {
             foreach (ActivityObjectBase item in root.Items)
             {
-                item.ID = HashGen.Instance.GenerateHash(item.GetDataToHash());
+                item.HashCache = HashGen.Instance.GenerateHash(item.GetDataToHash());
 
                 if (item is Group)
                 {
@@ -147,7 +230,7 @@ namespace EstimationConsole
         {
             foreach (ActivityObjectBase item in group.Items)
             {
-                item.ID = HashGen.Instance.GenerateHash(item.GetDataToHash());
+                item.HashCache = HashGen.Instance.GenerateHash(item.GetDataToHash());
 
                 if (item is Group)
                 {
@@ -170,14 +253,14 @@ namespace EstimationConsole
             Tree tree = new Tree();
             List<Group> groupList = new List<Group>();
 
-            tree.ID = group.ID;
+            tree.ID = group.HashCache;
             tree.Name = group.Name;
 
             foreach (ActivityObjectBase item in group.Items)
             {
                 TreeItem treeItem = new TreeItem();
 
-                treeItem.ItemID = item.ID;
+                treeItem.ItemID = item.HashCache;
                 treeItem.Name = item.Name;
 
                 if (item is Activity)

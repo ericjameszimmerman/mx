@@ -1,0 +1,9 @@
+{
+  "DataType": "activity",
+  "UniqueID": "15a64321-7d7a-4571-b531-1779db5ebf96",
+  "ShortName": "MXSE-7",
+  "Name": "Tracking View",
+  "Description": "View supporting accumulation of time entries by task, group, etc.",
+  "TimeEntries": [],
+  "Properties": []
+}

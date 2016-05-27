@@ -16,7 +16,9 @@ namespace mx.core
         }
 
         public string ID { get; set; }
-        
+
+        public string HashCache { get; set; }
+
         public string Name { get; set; }
 
         public Group Parent;

@@ -1,0 +1,17 @@
+{
+  "DataType": "tree",
+  "Items": [
+    {
+      "ItemID": "067d766267e9bf2174ad75a5715e68969c5e54b1",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": ".group"
+    },
+    {
+      "ItemID": "3db474015b468a3ca7a6ebeae6e6bf06fd3bbd95",
+      "ItemType": "tree",
+      "Mode": "2",
+      "Name": "Views"
+    }
+  ]
+}

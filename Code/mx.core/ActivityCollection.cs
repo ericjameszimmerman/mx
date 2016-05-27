@@ -33,7 +33,7 @@ namespace mx.core
 
         public void AddNew(Group group, ActivityObjectBase item)
         {
-            item.ID = GetNextId().ToString();
+            item.ID = Guid.NewGuid().ToString(); // GetNextId().ToString();
             item.Parent = group;
             this.activityLookup.Add(item.ID, item);
             group.AddItem(item);

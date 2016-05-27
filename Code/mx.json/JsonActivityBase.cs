@@ -14,8 +14,15 @@ namespace mx.json
         public JsonActivityBase()
         {
             this.Properties = new List<JsonPropertyBase>();
+            this.TimeEntries = new List<JsonTrackingEntry>();
         }
-        
+
+        /// <summary>
+        ///     An activity short-name or code
+        /// </summary>
+        [JsonProperty]
+        public string UniqueID { get; set; }
+
         /// <summary>
         ///     An activity short-name or code
         /// </summary>
@@ -33,6 +40,9 @@ namespace mx.json
         /// </summary>
         [JsonProperty]
         public string Description { get; set; }
+
+        [JsonProperty]
+        public List<JsonTrackingEntry> TimeEntries { get; set; }
 
         [JsonProperty]
         public List<JsonPropertyBase> Properties { get; set; }

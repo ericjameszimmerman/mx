@@ -1,0 +1,59 @@
+{
+  "DataType": "tree",
+  "Items": [
+    {
+      "ItemID": "6f18efa9fab6cd9068010b348bf4e52583d3924b",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": ".group"
+    },
+    {
+      "ItemID": "6ec12e8f62710bee7c89fb68a19204b486fc77cc",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": "Activity Edit Dialog.json"
+    },
+    {
+      "ItemID": "3e9f4026a2adb3f40dfc485cfce2cbf09c6a91db",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": "Activity Tree View Selector.json"
+    },
+    {
+      "ItemID": "8e09e5137676b2c663dc068f00d8e801e3ae0ab5",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": "Activity View.json"
+    },
+    {
+      "ItemID": "5c8f918ccaf059217b3c771a8884df32a45acc2d",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": "Schedule List View.json"
+    },
+    {
+      "ItemID": "665dbda79becf31735ea2b15133ac0e3b7d53610",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": "Schedule View.json"
+    },
+    {
+      "ItemID": "0594210ae45b9aaf3377d6670ebaf8577f27e056",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": "Tracking Edit View.json"
+    },
+    {
+      "ItemID": "5067178159d5d749c9461969b1e25bc325afd0aa",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": "Tracking View.json"
+    },
+    {
+      "ItemID": "62f81699e6d43ff0fa67d7fd63da442a3df9a522",
+      "ItemType": "blob",
+      "Mode": "1",
+      "Name": "Tree View Editor.json"
+    }
+  ]
+}

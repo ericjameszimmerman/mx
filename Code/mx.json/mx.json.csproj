@@ -51,6 +51,7 @@
     <Compile Include="JsonActivityBase.cs" />
     <Compile Include="JsonCommit.cs" />
     <Compile Include="JsonObjectFactory.cs" />
+    <Compile Include="JsonPersistor.cs" />
     <Compile Include="JsonScheduleBlock.cs" />
     <Compile Include="JsonScheduleItem.cs" />
     <Compile Include="JsonTrackingCollection.cs" />

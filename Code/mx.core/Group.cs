@@ -23,6 +23,11 @@ namespace mx.core
             this.Items.Add(activity);
         }
 
+        public void RemoveItem(ActivityObjectBase activity)
+        {
+            this.Items.Remove(activity);
+        }
+
         public ActivityObjectBase FindItemByName(string name)
         {
             foreach (ActivityObjectBase item in this.Items)

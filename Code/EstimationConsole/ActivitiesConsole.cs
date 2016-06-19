@@ -18,6 +18,8 @@ namespace EstimationConsole
         {
             this.AddCommand(new ChangeGroup(this));
             this.AddCommand(new ListGroup(this));
+            this.AddCommand(new AddActivityCommand(this));
+            this.AddCommand(new DeleteActivityCommand(this));
         }
 
         protected override void ShowUsage()
@@ -56,6 +58,76 @@ namespace EstimationConsole
 
             GeneratePwd(group.Parent, sb);
             sb.Append(string.Format("{0}> ", group.Name));
+        }
+
+        protected override string OnAutoCompleteRequest(string partialEntry)
+        {
+            List<string> matchingList = new List<string>();
+
+            partialEntry = partialEntry.Replace("\"", "");
+
+            foreach (ActivityObjectBase activity in this.Project.WorkingGroup.Items)
+            {
+                if (activity.Name.StartsWith(partialEntry, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    matchingList.Add(activity.Name);
+                }
+            }
+
+            if (matchingList.Count == 1)
+            {
+                return this.ResponseHelper(matchingList[0]);
+            }
+            else if (matchingList.Count > 1)
+            {
+                string result = matchingList[0];
+                int startIndex = partialEntry.Length - 1;
+
+                for (int i = 1; i < matchingList.Count; i++)
+                {
+                    result = this.StringIntersection(result, matchingList[i], startIndex);
+                }
+
+                return this.ResponseHelper(result);
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        private string ResponseHelper(string responseInput)
+        {
+            if (responseInput.Contains(' '))
+            {
+                // put it in quotes
+                return string.Format("\"{0}\"", responseInput);
+            }
+            else
+            {
+                return responseInput;
+            }
+        }
+
+        private string StringIntersection(string s1, string s2, int startIndex)
+        {
+            int length = Math.Min(s1.Length, s2.Length);
+
+            // Since we are possibly not starting at zero, adjust the length so we don't
+            // index past the end of the shortest string.
+            length -= startIndex;
+
+            int index;
+
+            for (index = startIndex; index <= length; index++)
+            {
+                if (Char.ToLower(s1[index]) != Char.ToLower(s2[index]))
+                {
+                    break;
+                }
+            }
+
+            return s1.Substring(0, index);
         }
 
         //public override void RunConsole()

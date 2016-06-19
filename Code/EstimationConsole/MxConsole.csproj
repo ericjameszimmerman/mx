@@ -49,10 +49,19 @@
   <ItemGroup>
     <Compile Include="ActivitiesConsole.cs" />
     <Compile Include="ArgumentsHelper.cs" />
+    <Compile Include="CommandHistory.cs" />
+    <Compile Include="Commands\AddActivityCommand.cs" />
+    <Compile Include="Commands\AliasCommand.cs" />
     <Compile Include="Commands\ChangeGroup.cs" />
     <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\DeleteActivityCommand.cs" />
     <Compile Include="Commands\ListGroup.cs" />
+    <Compile Include="Commands\MoveActivity.cs" />
+    <Compile Include="Commands\RenameActivityCommand.cs" />
     <Compile Include="Commands\RunConsoleCommand.cs" />
+    <Compile Include="Commands\SummaryCommand.cs" />
+    <Compile Include="ConsoleController.cs" />
+    <Compile Include="ConsoleLine.cs" />
     <Compile Include="Mono.Options-PCL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Project.cs" />

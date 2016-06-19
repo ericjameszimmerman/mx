@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using mx.core.Persistance;
 
 namespace EstimationConsole
 {
@@ -17,9 +18,12 @@ namespace EstimationConsole
         private string objectPath;
         private string historyPath;
         private Group activityRoot;
+        private JsonPersistor persistor;
+        private UserCollection userCollection;
 
         public Project()
         {
+            // TODO: Delete this
             this.factory = new JsonObjectFactory();
         }
 
@@ -33,14 +37,26 @@ namespace EstimationConsole
             }
         }
 
+        public IProjectPersistor Persistor
+        {
+            get
+            {
+                return this.persistor;
+            }
+        }
+
         public Group WorkingGroup { get; set; }
 
         public void Load()
         {
             TestDataBuilder builder = new TestDataBuilder();
 
-            ProjectLoader loader = new ProjectLoader();
-            this.activityRoot = loader.LoadProjectTree(builder.GetTestDataPath());
+            this.userCollection = new UserCollection();
+            this.persistor = new JsonPersistor(builder.GetTestDataPath(), this.userCollection);
+            //ProjectLoader loader = new ProjectLoader();
+            //this.activityRoot = loader.LoadProjectTree(builder.GetTestDataPath());
+
+            this.activityRoot = this.persistor.LoadProjectTree();
             this.WorkingGroup = this.activityRoot;
         }
 

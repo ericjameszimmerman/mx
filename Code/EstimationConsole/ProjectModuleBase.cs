@@ -3,6 +3,7 @@
     using Commands;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -49,12 +50,13 @@
         {
             string command;
             CommandBase commandToExecute;
+            ConsoleController console = new ConsoleController();
+            console.Initialize(this.OnAutoCompleteRequest);
 
             while (true)
             {
-                // TODO: Reads
                 Console.Write(string.Format("\n{0}", this.Prompt));
-                string line = Console.ReadLine();
+                string line = console.ReadLine();
 
                 int firstSpaceIndex = line.IndexOf(' ');
                 if (firstSpaceIndex < 0)
@@ -92,6 +94,48 @@
                 }
             }
         }
+
+        protected virtual string OnAutoCompleteRequest(string partialEntry)
+        {
+            return string.Empty;
+        }
+
+        //private string ReadLine()
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    ConsoleKeyInfo key;
+        //    int x = Console.CursorLeft;
+        //    int y = Console.CursorTop;
+            
+        //    Stream stream = Console.OpenStandardInput();
+
+        //    while (true)
+        //    {
+                
+        //        key = Console.ReadKey();
+                
+        //        if (key.Key == ConsoleKey.Tab)
+        //        {
+        //            sb.Append("tab");
+        //            Console.SetCursorPosition(x, y);
+        //            Console.Write(sb.ToString());
+        //        }
+        //        else if (key.Key == ConsoleKey.Enter)
+        //        {
+        //            break;
+        //        }
+        //        else if (key.Key == ConsoleKey.Backspace)
+        //        {
+
+        //        }
+        //        else
+        //        {
+        //            sb.Append(key.KeyChar);
+        //        }
+        //    }
+
+        //    return sb.ToString();
+        //}
 
         protected virtual void ShowUsage()
         {

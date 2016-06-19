@@ -27,5 +27,42 @@ namespace mx.core
         {
             throw new NotImplementedException();
         }
+
+        public string Path
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                this.AppendPath(sb);
+
+                if (sb.Length == 0)
+                {
+                    return ProjectPath.PATH_DELIMITER;
+                }
+                else
+                {
+                    return sb.ToString();
+                }
+            }
+        }
+
+        private void AppendPath(StringBuilder sb)
+        {
+            if (this.Parent == null)
+            {
+                // We are the root
+                if (!(this is RootGroup))
+                {
+                    throw new Exception("Broken Group Link");
+                }
+
+                // Don't add anything. Root path is an empty string
+            }
+            else
+            {
+                this.Parent.AppendPath(sb);
+                sb.AppendFormat("{0}{1}", ProjectPath.PATH_DELIMITER, this.Name);
+            }
+        }
     }
 }
